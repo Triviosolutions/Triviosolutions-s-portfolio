@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, MapPin, Linkedin, Github, ShieldCheck } from 'lucide-react';
+import trivioLogo from '../assets/trivio-logo.png';
 
 export default function Footer({ setActivePage }) {
   const handleNavClick = (id) => {
@@ -14,13 +15,7 @@ export default function Footer({ setActivePage }) {
           {/* Column 1: Brand */}
           <div className="footer-col brand-col">
             <div className="footer-logo-lockup" onClick={() => handleNavClick('home')}>
-              <div className="footer-logo-badge">
-                <span className="footer-t-char">T</span>
-              </div>
-              <div className="footer-logo-text">
-                <span className="logo-title-white">Trivio</span>
-                <span className="logo-sub-white">Solutions</span>
-              </div>
+              <img src={trivioLogo} alt="Trivio Solutions" className="footer-logo-image" />
             </div>
 
             <p className="brand-tagline">
@@ -129,50 +124,18 @@ export default function Footer({ setActivePage }) {
         .footer-logo-lockup {
           display: flex;
           align-items: center;
-          gap: 10px;
           cursor: pointer;
           user-select: none;
-          margin-bottom: 14px;
+          margin-bottom: 16px;
         }
 
-        .footer-logo-badge {
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #FFFFFF;
-          font-family: var(--font-primary);
-          font-weight: 800;
-          font-size: 1.1rem;
-        }
-
-        .footer-t-char {
-          line-height: 1;
-        }
-
-        .footer-logo-text {
-          display: flex;
-          flex-direction: column;
-          line-height: 1;
-        }
-
-        .logo-title-white {
-          font-family: var(--font-primary);
-          font-weight: 800;
-          font-size: 1.1rem;
-          color: #FFFFFF;
-        }
-
-        .logo-sub-white {
-          font-family: var(--font-primary);
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: #94A3B8;
-          margin-top: 1px;
+        .footer-logo-image {
+          height: 64px;
+          width: auto;
+          max-width: 100%;
+          display: block;
+          border-radius: 4px;
+          object-fit: contain;
         }
 
         .brand-tagline {

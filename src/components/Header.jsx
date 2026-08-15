@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, Cpu, Layers, Smartphone, Monitor } from 'lucide-react';
+import { Menu, X, ChevronDown, Cpu, Layers, Smartphone, Monitor, Stethoscope, ShoppingCart, Landmark, Truck, Store, FlaskConical } from 'lucide-react';
+import trivioLogo from '../assets/trivio-logo.png';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [industriesDropdownOpen, setIndustriesDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const serviceSubItems = [
@@ -14,6 +16,15 @@ export default function Header() {
     { label: 'AI & Automation Add-Ons', icon: Cpu, path: '/services/ai-ml' }
   ];
 
+  const industrySubItems = [
+    { label: 'Healthcare', icon: Stethoscope, slug: 'healthcare' },
+    { label: 'E-commerce', icon: ShoppingCart, slug: 'e-commerce' },
+    { label: 'Fintech', icon: Landmark, slug: 'fintech' },
+    { label: 'Logistics', icon: Truck, slug: 'logistics' },
+    { label: 'Retail & SMB', icon: Store, slug: 'retail-smb' },
+    { label: 'R&D / SaaS', icon: FlaskConical, slug: 'rnd-saas' }
+  ];
+
   const handleDropdownItemClick = (path) => {
     setServicesDropdownOpen(false);
     setMobileMenuOpen(false);
@@ -21,18 +32,18 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleIndustryClick = (slug) => {
+    setIndustriesDropdownOpen(false);
+    setMobileMenuOpen(false);
+    navigate(`/industries/${slug}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="site-header">
       <div className="container header-container">
-        {/* Logo Lockup */}
         <Link to="/" className="logo-lockup" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="logo-badge-icon">
-            <span className="logo-t-char">T</span>
-          </div>
-          <div className="logo-text-wrapper">
-            <span className="logo-title">Trivio</span>
-            <span className="logo-subtitle">Solutions</span>
-          </div>
+          <img src={trivioLogo} alt="Trivio Solutions" className="logo-image" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -60,6 +71,36 @@ export default function Header() {
                       key={idx}
                       className="dropdown-item"
                       onClick={() => handleDropdownItemClick(sub.path)}
+                    >
+                      <SubIcon size={15} className="dropdown-icon" />
+                      <span>{sub.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Industries Dropdown */}
+          <div
+            className="dropdown-trigger"
+            onMouseEnter={() => setIndustriesDropdownOpen(true)}
+            onMouseLeave={() => setIndustriesDropdownOpen(false)}
+          >
+            <button className="nav-link">
+              <span>Industries</span>
+              <ChevronDown size={14} className="dropdown-arrow" />
+            </button>
+
+            {industriesDropdownOpen && (
+              <div className="dropdown-menu">
+                {industrySubItems.map((sub, idx) => {
+                  const SubIcon = sub.icon;
+                  return (
+                    <button
+                      key={idx}
+                      className="dropdown-item"
+                      onClick={() => handleIndustryClick(sub.slug)}
                     >
                       <SubIcon size={15} className="dropdown-icon" />
                       <span>{sub.label}</span>
@@ -126,6 +167,20 @@ export default function Header() {
               ))}
             </div>
 
+            <span className="mobile-nav-link mobile-section-label">Industries</span>
+
+            <div className="mobile-sub-services">
+              {industrySubItems.map((sub, idx) => (
+                <button
+                  key={idx}
+                  className="mobile-sub-link"
+                  onClick={() => handleIndustryClick(sub.slug)}
+                >
+                  • {sub.label}
+                </button>
+              ))}
+            </div>
+
             <Link to="/case-studies" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
               Case Studies
             </Link>
@@ -148,7 +203,7 @@ export default function Header() {
           z-index: 1000;
           background: #FFFFFF;
           border-bottom: 1px solid var(--color-neutral-border);
-          height: 70px;
+          height: 84px;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
@@ -162,52 +217,20 @@ export default function Header() {
         .logo-lockup {
           display: flex;
           align-items: center;
-          gap: 10px;
           cursor: pointer;
           user-select: none;
           flex-shrink: 0;
+          height: 100%;
+          padding: 4px 0;
         }
 
-        .logo-badge-icon {
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          background: #090F1E;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #FFFFFF;
-          font-family: var(--font-primary);
-          font-weight: 800;
-          font-size: 1.15rem;
-          flex-shrink: 0;
-        }
-
-        .logo-t-char {
-          line-height: 1;
-        }
-
-        .logo-text-wrapper {
-          display: flex;
-          flex-direction: column;
-          line-height: 1;
-        }
-
-        .logo-title {
-          font-family: var(--font-primary);
-          font-weight: 800;
-          font-size: clamp(1rem, 3vw, 1.15rem);
-          color: #090F1E;
-          letter-spacing: -0.01em;
-        }
-
-        .logo-subtitle {
-          font-family: var(--font-primary);
-          font-weight: 600;
-          font-size: clamp(0.8rem, 2vw, 0.95rem);
-          color: #090F1E;
-          letter-spacing: -0.01em;
-          margin-top: 1px;
+        .logo-image {
+          height: 76px;
+          width: auto;
+          max-width: min(320px, 42vw);
+          display: block;
+          border-radius: 4px;
+          object-fit: contain;
         }
 
         .desktop-nav {
@@ -234,6 +257,13 @@ export default function Header() {
 
         .nav-link:hover, .nav-link.active {
           color: #090F1E;
+        }
+
+        button.nav-link {
+          background: none;
+          border: none;
+          font-family: var(--font-primary);
+          cursor: pointer;
         }
 
         .dropdown-menu {
@@ -303,14 +333,14 @@ export default function Header() {
 
         .mobile-drawer {
           position: absolute;
-          top: 70px;
+          top: 84px;
           left: 0;
           right: 0;
           background: #FFFFFF;
           border-bottom: 1px solid var(--color-neutral-border);
           padding: 16px;
           box-shadow: var(--shadow-md);
-          max-height: calc(100vh - 70px);
+          max-height: calc(100vh - 84px);
           overflow-y: auto;
         }
 
@@ -343,6 +373,15 @@ export default function Header() {
           padding: 4px 0;
         }
 
+        button.mobile-sub-link {
+          background: none;
+          border: none;
+          text-align: left;
+          font-family: var(--font-primary);
+          cursor: pointer;
+          width: 100%;
+        }
+
         .w-full {
           width: 100%;
         }
@@ -356,14 +395,26 @@ export default function Header() {
           .mobile-toggle {
             display: block;
           }
+          .logo-image {
+            height: 68px;
+            max-width: min(280px, 55vw);
+          }
         }
 
         @media (max-width: 380px) {
           .nav-contact-btn {
             display: none;
           }
-          .logo-subtitle {
-            display: none;
+          .site-header {
+            height: 76px;
+          }
+          .mobile-drawer {
+            top: 76px;
+            max-height: calc(100vh - 76px);
+          }
+          .logo-image {
+            height: 64px;
+            max-width: min(240px, 62vw);
           }
         }
       `}</style>

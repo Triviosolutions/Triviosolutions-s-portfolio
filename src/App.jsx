@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ServicesIndexPage from './pages/ServicesIndexPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import IndustryDetailPage from './pages/IndustryDetailPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import CaseStudyDetailPage from './pages/CaseStudyDetailPage';
 import AboutPage from './pages/AboutPage';
@@ -29,12 +30,16 @@ export default function App() {
               path="/services" 
               element={<ServicesIndexPage />} 
             />
-            <Route 
-              path="/services/:serviceId" 
-              element={<ServiceDetailPage setSelectedCaseStudy={setSelectedCaseStudy} />} 
+            <Route
+              path="/services/:serviceId"
+              element={<ServiceDetailPage setSelectedCaseStudy={setSelectedCaseStudy} />}
             />
-            <Route 
-              path="/case-studies" 
+            <Route
+              path="/industries/:industryId"
+              element={<IndustryDetailPage setSelectedCaseStudy={setSelectedCaseStudy} />}
+            />
+            <Route
+              path="/case-studies"
               element={<CaseStudiesPage setSelectedCaseStudy={setSelectedCaseStudy} />} 
             />
             <Route 
