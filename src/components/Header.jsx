@@ -70,15 +70,8 @@ export default function Header() {
             )}
           </div>
 
-          <NavLink 
-            to="/case-studies" 
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-          >
-            Products
-          </NavLink>
-
-          <NavLink 
-            to="/case-studies" 
+          <NavLink
+            to="/case-studies"
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
             Case Studies
@@ -134,7 +127,7 @@ export default function Header() {
             </div>
 
             <Link to="/case-studies" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
-              Case Studies & Products
+              Case Studies
             </Link>
 
             <Link to="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>
