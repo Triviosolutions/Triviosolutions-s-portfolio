@@ -1,4 +1,4 @@
-import { Stethoscope, ShoppingCart, Landmark, Truck, Store, FlaskConical } from 'lucide-react';
+import { Stethoscope, ShoppingCart, Landmark, Truck, Store, FlaskConical, GraduationCap, ShieldCheck, Briefcase, UtensilsCrossed } from 'lucide-react';
 
 export const industriesData = {
   healthcare: {
@@ -48,5 +48,37 @@ export const industriesData = {
     icon: FlaskConical,
     tagline: 'Internal tools and SaaS products, built fast.',
     description: 'From internal R&D tools to full SaaS products, we help teams validate ideas quickly and ship production-ready software.'
+  },
+  education: {
+    slug: 'education',
+    name: 'Education',
+    industryValue: 'Education',
+    icon: GraduationCap,
+    tagline: 'Learning platforms students actually stick with.',
+    description: 'We build learning management systems, content tools, and student-facing apps that make course delivery and progress tracking simple for institutes and learners alike.'
+  },
+  insurance: {
+    slug: 'insurance',
+    name: 'Insurance',
+    industryValue: 'Insurance',
+    icon: ShieldCheck,
+    tagline: 'AI-driven document intelligence for insurers.',
+    description: 'We build document classification, extraction, and workflow-automation systems that help insurance teams process policies faster and more accurately.'
+  },
+  'professional-services': {
+    slug: 'professional-services',
+    name: 'Professional Services',
+    industryValue: 'Professional Services',
+    icon: Briefcase,
+    tagline: 'Automation and digital presence for service teams.',
+    description: 'From RPA that automates repetitive compliance work to polished portfolio and marketing sites, we help consultancies and service firms operate and present themselves better.'
+  },
+  hospitality: {
+    slug: 'hospitality',
+    name: 'Hospitality',
+    industryValue: 'Hospitality',
+    icon: UtensilsCrossed,
+    tagline: 'Real-time operations software for restaurants.',
+    description: 'We build point-of-sale, kitchen workflow, inventory, and staff-management platforms that give restaurant owners a live, connected view of their operations.'
   }
 };

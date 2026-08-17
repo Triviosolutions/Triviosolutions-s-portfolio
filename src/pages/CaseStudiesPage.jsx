@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { caseStudies } from '../data/caseStudiesData';
@@ -21,8 +22,12 @@ export default function CaseStudiesPage({ setSelectedCaseStudy }) {
     { id: 'Healthcare', label: 'Healthcare' },
     { id: 'E-commerce', label: 'E-commerce' },
     { id: 'Fintech', label: 'Fintech' },
-    { id: 'Logistics', label: 'Logistics' },
+    { id: 'Insurance', label: 'Insurance' },
+    { id: 'Education', label: 'Education' },
+    { id: 'Hospitality', label: 'Hospitality' },
+    { id: 'Professional Services', label: 'Professional Services' },
     { id: 'Retail & SMB', label: 'Retail & SMB' },
+    { id: 'Logistics', label: 'Logistics' },
     { id: 'Internal R&D / SaaS', label: 'R&D / SaaS' }
   ];
 
