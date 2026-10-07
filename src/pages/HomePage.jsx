@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroArcBackground from '../components/HeroArcBackground';
 import technologySvg from '../assets/technology.svg';
+
 import webImage from '../assets/web-image.webp';
 import FoundersSection from '../components/FoundersSection';
 import { caseStudies } from '../data/caseStudiesData';
