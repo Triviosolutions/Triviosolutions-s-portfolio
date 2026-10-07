@@ -150,13 +150,8 @@ export default function StaggeredScrollCards({ items, renderItem, getKey, stagge
           transition: border-color 0.2s ease, box-shadow 0.2s ease, z-index 0.2s ease;
         }
 
-        /* Neighbouring cards share ONE line, and it belongs to the card on its right
-           (every card except the last has no right border). Later cards paint over
-           earlier ones, so that line can never be covered by a neighbour's background
-           when widths land on fractional pixels. */
-        .ssc-card:not(:last-child) {
-          border-right-width: 0;
-        }
+        /* Keep every card's full outline visible while cards are staggered. When
+           they line up, the following card paints over the shared edge. */
 
         .ssc-card:hover {
           z-index: 10;
